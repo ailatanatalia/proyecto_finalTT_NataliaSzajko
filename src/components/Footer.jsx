@@ -1,11 +1,32 @@
-import { Container } from 'react-bootstrap';
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import 'font-awesome/css/font-awesome.min.css';
 
 export default function Footer() {
     return (
-        <footer className="bg-dark text-white mt-5 py-3">
+        <footer className="bg-primary text-white text-center py-4 m-0">
             <Container>
-                <p className="mb-0 text-center">Footer</p>
+                <Row>
+                    <Col md={6}>
+                        <p className="mb-0"><strong>Personajes de DragonBall</strong></p>
+                        <p className="mb-0">Copyright no es de Natalia Szajko</p>
+                    </Col>
+                    <Col md={6}>
+                        <div>
+                            <a href="#" className="text-white me-3">
+                                <i className="fa fa-facebook fa-2x"></i>
+                            </a>
+                            <a href="#" className="text-white me-3">
+                                <i className="fa fa-twitter fa-2x"></i>
+                            </a>
+                            <a href="#" className="text-white">
+                                <i className="fa fa-instagram fa-2x"></i>
+                            </a>
+                        </div>
+                    </Col>
+                </Row>
             </Container>
+
         </footer>
     );
 }

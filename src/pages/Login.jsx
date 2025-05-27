@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Form, Button, Alert } from "react-bootstrap";
 
 export default function Login() {
 
@@ -17,7 +17,7 @@ export default function Login() {
     };
 
     return (
-        <Container className="mt-5" style={{ maxWidth: 400 }}>
+        <Container className="my-5" style={{ maxWidth: 400 }}>
             <h2>Iniciar sesion</h2>
             <Form>
                 <Form.Group className="mb-3">
@@ -33,38 +33,3 @@ export default function Login() {
         </Container>
     )
 }
-
-
-
-/* 
-import { useNavigate } from "react-router-dom";
-import { Container, Form, Button } from "react-bootstrap";
-
-export default function Login() {
-
-    const navigate = useNavigate();
-
-    const handleLogin = () => {
-        localStorage.setItem('auth', 'true'); //esto guarda en local storage del navegador un auth=true (par clave-valor) q el formulario consulta
-        navigate('/profile/profile1'); //redirijo a otra pag pero con el tag del usuario: con navigate pasa a la pag "perfil" y le pasa "usuario123" como param
-    };
-
-
-    return (
-        <Container className="mt-5" style={{ maxWidth: 400 }}>
-            <h2>Iniciar sesion</h2>
-            <Form>
-                <Form.Group className="mb-3">
-                    <Form.Label>Usuario</Form.Label>
-                    <Form.Control type="text"></Form.Control>
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Label>Contraseña</Form.Label>
-                    <Form.Control type="password"></Form.Control>
-                </Form.Group>
-                <Button variant="primary" onClick={handleLogin}>Entrar</Button>
-            </Form>
-        </Container>
-    );
-}
- */

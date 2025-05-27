@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useState } from "react";
 //import { Navbar, Container } from 'react-bootstrap'
 
 import Header from './components/Header'
-import Productos from './components/Products';
+import Products from './components/Products';
 import Footer from './components/Footer';
 import Login from './pages/Login';
 import Home from './pages/Home';
@@ -16,9 +17,11 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
 
+  const [cart, setCart] = useState(0);
+
   return (//        
-    <BrowserRouter>
-      <Header />
+    <BrowserRouter >
+      <Header cart={cart} />
       <Routes>
         {/*Rutas no protegidas*/}
         <Route path="/login" element={<Login />} />
@@ -28,7 +31,7 @@ function App() {
 
         <Route path="/prodcat1" element={<ProdCat1 />} />
         <Route path="/prodcat2" element={<ProdCat2 />} />
-        <Route path="/productos" element={<Productos />} />
+        <Route path="/products" element={<Products query="" title="Todos los personajes" />} />
 
         {/*Rutas protegidas*/}
         <Route path="/profile/:id" element={

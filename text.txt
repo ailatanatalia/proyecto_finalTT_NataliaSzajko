@@ -1,0 +1,34 @@
+<Card className="h-100 d-flex flex-column"/* className="m-2"*/ style={{
+                            width: "60%",
+                            background: "black",
+                            boxShadow: "0 4px 8px 0 rgba(12, 12, 12, 0.93), 0 6px 50px 0 rgba(245, 235, 235, 0.99)"
+                        }} >
+                            <Card.Img variant='top' src={char.image} style={{ background: "white", objectFit: "contain", }} />
+                            <Card.Body variant='bottom' style={{
+                                fontFamily: "Arial, Helvetica, sans-serif",
+                                color: "white",
+                                textAlign: "center",
+                                padding: "10px 20px",
+                            }}>
+                                <Card.Title style={{
+                                    color: "rgb(210, 241, 89)",
+                                    fontWeight: "bolder",
+                                }}><h2><strong>{char.name}</strong></h2></Card.Title>
+                                <Card.Text style={{ textAlign: "left" }}>
+                                    <h3><strong>Raza:</strong></h3>
+                                    {char.race || 'N/A'}
+                                    <br />
+                                    <h3><strong>Género:</strong></h3>
+                                    {char.gender || 'N/A'}
+
+                                </Card.Text>
+                                <Button variant="primary" style={{ margin: "10px 20px", }} onClick={() => {
+                                    setCarrito(carrito + 1);
+                                    //setCartList(cartList.push(char))
+                                    setCartList(cartList.concat([char]));
+                                }
+                                }>agregar al carrito </Button>
+                                <br />
+                                <Button variant="danger" onClick={() => { carrito > 0 ? (setCarrito(carrito - 1)) : (setCarrito(0)) }}>Eliminar</Button>
+                            </Card.Body>
+                        </Card>

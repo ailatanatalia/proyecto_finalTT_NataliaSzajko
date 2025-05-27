@@ -6,7 +6,7 @@ export default function Profile() {
     const { id } = useParams();
     return (
         <Container className="mt-4">
-            <h1>Perfil {id}</h1>
+            <h1>Mi Perfil {id}</h1>
         </Container>
     )
 }
