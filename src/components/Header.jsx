@@ -1,22 +1,25 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { Navbar, Nav, Badge, Container, Button, Form, Row, Col } from "react-bootstrap";
+import { Navbar, Nav, Badge, Button, Form, Row, Col } from "react-bootstrap";
+import { CartContext } from "./CartContext";
 
 import Menu from "./Menu";
 
-export default function Header(props) {
+export default function Header() {
 
     const navigate = useNavigate();
+    const { cart } = useContext(CartContext);
+    const totalItems = cart.reduce((acc, item) => acc + item.cantidad, 0);
     const [search, setSearch] = useState('');
     const handleSearch = (e) => {
         setSearch(e.target.value);
     };
-    const isAuth = localStorage.getItem('auth') === 'true'; // asigna auth = true
+    const isAuth = localStorage.getItem('auth') === 'true';
 
     const cerrarSesion = () => {
-        localStorage.removeItem('auth'); // limpia el reanglon donde dice "auth=true"
+        localStorage.removeItem('auth');
         navigate('/');
     };
 
@@ -46,10 +49,13 @@ export default function Header(props) {
                     ) : (
                         <Button variant="warning" className="me-3" onClick={cerrarSesion}>Cerrar Sesion</Button>
                     )}
-                    <Badge bg="secondary" className="me-3">{props.cart}</Badge>
-                    <Link to="/cart" className="text-white">
-                        <FontAwesomeIcon icon={faShoppingCart} size="2xl" >
-                        </FontAwesomeIcon>
+                    <Link to="/cart" className="text-white position-relative">
+                        <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+                        {totalItems > 0 && (
+                            <Badge pill bg="danger" className="position-absolute top-0 start-100 translate-middle">
+                                {totalItems}
+                            </Badge>
+                        )}
                     </Link>
                 </Nav>
 

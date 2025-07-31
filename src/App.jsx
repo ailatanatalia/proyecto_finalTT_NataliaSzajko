@@ -1,6 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useState } from "react";
-//import { Navbar, Container } from 'react-bootstrap'
 
 import Header from './components/Header'
 import Products from './components/Products';
@@ -13,37 +11,47 @@ import Admin from './pages/Admin';
 import ProdCat1 from './pages/ProdCat1';
 import ProdCat2 from './pages/ProdCat2';
 import ProtectedRoute from './components/ProtectedRoute';
+import { AuthProvider } from './components/AuthContext';
+import { CartProvider } from './components/CartContext';
+import Cart from './pages/Cart';
 
 
 function App() {
 
-  const [cart, setCart] = useState(0);
+  return (//   
+    <CartProvider>
 
-  return (//        
-    <BrowserRouter >
-      <Header cart={cart} />
-      <Routes>
-        {/*Rutas no protegidas*/}
-        <Route path="/login" element={<Login />} />
+      <AuthProvider>
+        <BrowserRouter >
 
-        <Route path='/' element={<Home />} />
-        <Route path='/contact' element={<Contact />} />
+          <Header />
+          <Routes>
+            {/*Rutas no protegidas*/}
+            <Route path='/' element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path="/cart" element={<Cart />} />
 
-        <Route path="/prodcat1" element={<ProdCat1 />} />
-        <Route path="/prodcat2" element={<ProdCat2 />} />
-        <Route path="/products" element={<Products query="" title="Todos los personajes" />} />
+            <Route path="/prodcat1" element={<ProdCat1 />} />
+            <Route path="/prodcat2" element={<ProdCat2 />} />
+            <Route path="/products" element={<Products query="" title="Todos los personajes" />} />
 
-        {/*Rutas protegidas*/}
-        <Route path="/profile/:id" element={
-          <ProtectedRoute><Profile /></ProtectedRoute>
-        } />
-        <Route path="/admin" element={
-          <ProtectedRoute><Admin /></ProtectedRoute>
-        } />
+            {/*Rutas protegidas*/}
+            <Route path="/profile/:id" element={
+              <ProtectedRoute><Profile /></ProtectedRoute>
+            } />
+            <Route path="/admin" element={
+              <ProtectedRoute><Admin /></ProtectedRoute>
+            } />
+          </Routes>
 
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+          <Footer />
+        </BrowserRouter>
+
+      </AuthProvider >
+    </CartProvider>
+
+
   );
 }
 

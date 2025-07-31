@@ -21,16 +21,16 @@ export default function Menu(props) {
                 <Navbar.Collapse id="basic-navbar-nav">
 
                     <Nav className="me-auto">
-                        {/*Enlace s q solo se ven si el usu esta autenticado. la estructura es una especie de if*/}
+                        {/*Enlaces q solo se ven si el usu esta autenticado*/}
                         {props.auth && (
                             <>
                                 <Nav.Link as={Link} to="/profile/user">Perfil</Nav.Link>
                                 <Nav.Link as={Link} to="/admin">Admin</Nav.Link>
                             </>)}
-                        <Nav.Link as={Link} to="/contact">Contacto</Nav.Link> {/*as={Link} to="/contact"*/}
+                        <Nav.Link as={Link} to="/contact">Contacto</Nav.Link>
                         <NavDropdown title="Personajes" id="basic-nav-dropdown" menuVariant="dark">
-                            <NavDropdown.Item as={Link} to="/prodcat1" >Raza Saiyan</NavDropdown.Item> {/*href="#Prod_cat1"*/}
-                            <NavDropdown.Item as={Link} to="/prodcat2" >Personajes Femeninos</NavDropdown.Item> {/*href="#Prod_cat2"*/}
+                            <NavDropdown.Item as={Link} to="/prodcat1" >Raza Saiyan</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/prodcat2" >Personajes Femeninos</NavDropdown.Item>
                             <NavDropdown.Divider color='white' />
                             <NavDropdown.Item as={Link} to="/products" >Todos los personajes</NavDropdown.Item>
                         </NavDropdown>
